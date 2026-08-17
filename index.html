@@ -1,0 +1,4983 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Susi Sayang ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090204;
+    color:#fff;
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+:root{
+    --black:#090204;
+    --dark:#160609;
+    --wine:#4b101b;
+    --wine2:#741d30;
+    --wine3:#9d3046;
+    --gold:#c9a45b;
+    --gold-light:#f1d99b;
+    --cream:#f8ecdf;
+    --muted:#cdb9b7;
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+#bg{
+    position:fixed;
+    inset:0;
+    z-index:-20;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(120,25,45,.38),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(200,155,70,.12),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            145deg,
+            #070102,
+            #260910 50%,
+            #080203
+        );
+}
+
+#grain{
+    position:fixed;
+    inset:-50%;
+    width:200%;
+    height:200%;
+    z-index:100;
+    pointer-events:none;
+    opacity:.025;
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+
+/* =====================================================
+   PETALS
+===================================================== */
+
+#petals{
+    position:fixed;
+    inset:0;
+    z-index:90;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.petal{
+    position:absolute;
+    top:-60px;
+    font-size:18px;
+    opacity:.7;
+
+    animation:
+        fall linear forwards;
+}
+
+@keyframes fall{
+
+    to{
+        transform:
+            translate3d(var(--x),110vh,0)
+            rotate(720deg);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #671c2d,
+            #270a12 45%,
+            #080203 90%
+        );
+
+    transition:1.2s ease;
+}
+
+#intro.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.intro-content{
+    width:min(850px,90%);
+}
+
+.intro-small{
+    color:var(--gold-light);
+    font-size:11px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+}
+
+.intro-script{
+    margin-top:25px;
+
+    font-family:"Great Vibes";
+
+    font-size:
+        clamp(
+            65px,
+            12vw,
+            125px
+        );
+
+    color:#efd69c;
+}
+
+.intro-title{
+    font-family:"Cormorant Garamond";
+
+    font-size:
+        clamp(
+            45px,
+            8vw,
+            90px
+        );
+
+    font-weight:400;
+    letter-spacing:3px;
+}
+
+.intro-text{
+    max-width:650px;
+    margin:25px auto;
+
+    color:#d7c6c3;
+
+    font-size:15px;
+    line-height:1.9;
+}
+
+.open-btn,
+.proposal-btn,
+.game-start,
+.secret-btn{
+
+    margin-top:20px;
+
+    padding:
+        14px 28px;
+
+    border-radius:50px;
+
+    border:
+        1px solid
+        rgba(239,214,156,.6);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:#f0d99e;
+
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.open-btn:hover,
+.proposal-btn:hover,
+.game-start:hover,
+.secret-btn:hover{
+
+    background:#711d2d;
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,.4);
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+#musicBtn{
+
+    position:fixed;
+
+    top:25px;
+    right:25px;
+
+    z-index:200;
+
+    padding:
+        12px 18px;
+
+    border-radius:50px;
+
+    border:
+        1px solid
+        rgba(239,214,156,.5);
+
+    background:
+        rgba(15,4,7,.75);
+
+    backdrop-filter:blur(15px);
+
+    color:#f0d99e;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:100svh;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    padding:
+        100px 20px;
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(239,214,156,.10);
+
+    box-shadow:
+        0 0 100px
+        rgba(239,214,156,.04),
+
+        inset 0 0 100px
+        rgba(239,214,156,.03);
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:3;
+
+    max-width:1000px;
+}
+
+.eyebrow{
+
+    color:var(--gold-light);
+
+    font-size:11px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+}
+
+.hero h1{
+
+    margin:
+        35px 0;
+
+    font-family:"Cormorant Garamond";
+
+    font-size:
+        clamp(
+            75px,
+            15vw,
+            170px
+        );
+
+    line-height:.65;
+
+    font-weight:400;
+}
+
+.hero h1 span{
+
+    display:block;
+
+    font-family:"Great Vibes";
+
+    color:#e7c983;
+
+    font-size:.65em;
+
+    line-height:1.5;
+}
+
+.hero-description{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:#d4c3c0;
+
+    line-height:1.9;
+
+    font-size:15px;
+}
+
+.hero-date{
+
+    margin-top:35px;
+
+    color:#e6ca89;
+
+    letter-spacing:5px;
+
+    font-size:13px;
+}
+
+.hero-love{
+
+    margin-top:15px;
+
+    font-family:"Great Vibes";
+
+    font-size:30px;
+
+    color:#e4c57c;
+}
+
+.scroll{
+
+    margin-top:60px;
+
+    color:#a9908f;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+}
+
+
+/* =====================================================
+   HERO PHOTO
+===================================================== */
+
+.hero-photo{
+
+    position:relative;
+
+    width:190px;
+    height:240px;
+
+    margin:
+        25px auto 35px;
+
+    padding:7px;
+
+    border-radius:
+        110px 110px 35px 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f1d99b,
+            #8f5260,
+            #4b101b,
+            #d8b56c
+        );
+
+    box-shadow:
+
+        0 0 0 1px
+        rgba(241,217,155,.25),
+
+        0 20px 60px
+        rgba(0,0,0,.5),
+
+        0 0 60px
+        rgba(145,40,65,.25);
+
+    animation:
+        photoFloat 4s
+        ease-in-out infinite;
+
+    z-index:3;
+}
+
+.hero-photo img{
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    border-radius:
+        103px 103px 28px 28px;
+
+    border:
+        2px solid
+        rgba(255,248,230,.7);
+
+    filter:
+        saturate(1.05)
+        contrast(1.03);
+}
+
+.hero-photo::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-8px;
+
+    border-radius:
+        118px 118px 43px 43px;
+
+    border:
+        1px solid
+        rgba(239,214,156,.35);
+}
+
+.hero-photo::after{
+
+    content:"♡";
+
+    position:absolute;
+
+    right:-13px;
+    bottom:18px;
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#651b2a;
+
+    border:
+        1px solid
+        rgba(239,214,156,.6);
+
+    color:#f1d99b;
+
+    font-size:21px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.45);
+}
+
+.hero-photo-glow{
+
+    position:absolute;
+
+    inset:-30px;
+
+    z-index:-1;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(190,55,80,.22),
+            transparent 65%
+        );
+
+    filter:blur(12px);
+}
+
+@keyframes photoFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+
+    50%{
+        transform:
+            translateY(-10px)
+            rotate(1deg);
+    }
+
+}
+
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+section{
+    padding:120px 6%;
+}
+
+.light{
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(199,161,90,.10),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            180deg,
+            #f7ecdf,
+            #ead9c8
+        );
+
+    color:#39151b;
+}
+
+.section-head{
+
+    max-width:850px;
+
+    margin:
+        0 auto 65px;
+
+    text-align:center;
+}
+
+.section-head h2{
+
+    margin-top:20px;
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:
+        clamp(
+            60px,
+            9vw,
+            110px
+        );
+
+    font-weight:400;
+
+    line-height:.75;
+}
+
+.section-head p{
+
+    max-width:650px;
+
+    margin:30px auto;
+
+    color:#80696b;
+
+    line-height:1.9;
+}
+
+.divider{
+
+    margin-top:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:15px;
+
+    color:var(--gold);
+}
+
+.divider::before,
+.divider::after{
+
+    content:"";
+
+    width:70px;
+
+    height:1px;
+
+    background:
+        var(--gold);
+}
+
+
+/* =====================================================
+   BIRTHDAY
+===================================================== */
+
+.birthday{
+
+    max-width:1050px;
+
+    margin:auto;
+
+    padding:
+        70px 8%;
+
+    text-align:center;
+
+    background:
+        rgba(255,255,255,.55);
+
+    border:
+        1px solid
+        rgba(92,45,47,.16);
+
+    box-shadow:
+        0 35px 90px
+        rgba(57,22,27,.15);
+}
+
+.cake{
+
+    font-size:65px;
+
+    animation:
+        float 3s
+        ease-in-out infinite;
+}
+
+@keyframes float{
+
+    50%{
+        transform:
+            translateY(-8px);
+    }
+
+}
+
+.birthday h3{
+
+    margin:20px 0;
+
+    font-family:
+        "Great Vibes";
+
+    font-size:60px;
+
+    font-weight:400;
+
+    color:#651d2a;
+}
+
+.birthday p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:#80696b;
+
+    line-height:1.9;
+}
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+.letter-section{
+
+    background:#e6d7c8;
+
+    color:#35151a;
+}
+
+.letter{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:
+        clamp(
+            40px,
+            8vw,
+            85px
+        );
+
+    background:#fffdf8;
+
+    box-shadow:
+        0 40px 100px
+        rgba(50,20,23,.20);
+
+    position:relative;
+}
+
+.letter::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:18px;
+
+    border:
+        1px solid
+        rgba(199,161,90,.35);
+}
+
+.letter-content{
+
+    position:relative;
+}
+
+.letter-script{
+
+    font-family:
+        "Great Vibes";
+
+    color:#651d2a;
+
+    font-size:65px;
+
+    margin-bottom:20px;
+}
+
+.letter p{
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    color:#4b393a;
+}
+
+.letter p+p{
+    margin-top:22px;
+}
+
+.letter strong{
+    color:#651d2a;
+}
+
+.signature{
+
+    margin-top:40px;
+
+    text-align:right;
+
+    font-family:
+        "Great Vibes";
+
+    color:#651d2a;
+
+    font-size:40px;
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery{
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8eee2,
+            #ead8c8
+        );
+
+    color:#38151b;
+}
+
+.gallery-grid{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1.3fr .7fr;
+
+    grid-template-rows:
+        430px 430px;
+
+    gap:20px;
+}
+
+.photo-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#250b11;
+
+    box-shadow:
+        0 30px 80px
+        rgba(54,20,26,.18);
+}
+
+.photo-card:first-child{
+    grid-row:span 2;
+}
+
+.photo-card img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:
+        1.2s ease;
+}
+
+.photo-card:hover img{
+    transform:scale(1.08);
+}
+.photo-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:1.2s ease;
+}
+
+.photo-card:hover video{
+    transform:scale(1.08);
+}
+.photo-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(10,2,4,.85)
+        );
+}
+
+.photo-info{
+
+    position:absolute;
+
+    z-index:2;
+
+    left:30px;
+
+    bottom:25px;
+
+    color:white;
+}
+
+.photo-info small{
+
+    color:#e8cb8b;
+
+    letter-spacing:4px;
+}
+
+.photo-info h3{
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:45px;
+
+    font-weight:400;
+}
+
+
+/* =====================================================
+   REASONS
+===================================================== */
+
+.reasons{
+    background:#19070b;
+}
+
+.reasons .section-head h2{
+    color:#f1dfb4;
+}
+
+.reasons .section-head p{
+    color:#a99191;
+}
+
+.reason-grid{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:18px;
+}
+
+.reason{
+
+    padding:35px;
+
+    border:
+        1px solid
+        rgba(239,214,156,.15);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:.4s;
+}
+
+.reason:hover{
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(239,214,156,.45);
+}
+
+.reason small{
+
+    color:#d6b66f;
+
+    letter-spacing:4px;
+}
+
+.reason h3{
+
+    margin:10px 0;
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:40px;
+
+    color:#f1dfb4;
+
+    font-weight:400;
+}
+
+.reason p{
+
+    color:#a99191;
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   GAME
+===================================================== */
+
+.game-section{
+
+    min-height:100svh;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(140,28,52,.30),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            180deg,
+            #0b0305,
+            #210811,
+            #0b0305
+        );
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.game-box{
+
+    max-width:1050px;
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.game-intro{
+
+    max-width:700px;
+
+    margin:
+        0 auto 35px;
+}
+
+.game-intro h2{
+
+    margin:20px 0;
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:
+        clamp(
+            55px,
+            8vw,
+            95px
+        );
+
+    font-weight:400;
+
+    line-height:.8;
+
+    color:#f1dfb4;
+}
+
+.game-intro h2 span{
+
+    display:block;
+
+    font-family:
+        "Great Vibes";
+
+    color:#e8c785;
+
+    font-size:.85em;
+
+    line-height:1.4;
+}
+
+.game-intro p{
+
+    color:#bda9a8;
+
+    line-height:1.9;
+
+    margin:25px auto;
+}
+
+.game-start{
+    margin-bottom:30px;
+}
+
+
+/* =====================================================
+   NEW GAME SCREEN
+===================================================== */
+
+.game-screen{
+    display:none;
+
+    animation:
+        gameAppear .8s ease;
+}
+
+.game-screen.active{
+    display:block;
+}
+
+@keyframes gameAppear{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(30px)
+            scale(.97);
+    }
+
+    to{
+        opacity:1;
+
+        transform:none;
+    }
+
+}
+
+
+/* GAME HEADER */
+
+.game-message{
+
+    min-height:100px;
+
+    margin-bottom:20px;
+}
+
+.game-message h3{
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:38px;
+
+    color:#f1dfb4;
+
+    font-weight:400;
+}
+
+.game-message p{
+
+    color:#bda9a8;
+
+    margin-top:8px;
+
+    line-height:1.7;
+}
+
+
+/* GAME STATS */
+
+.game-stats{
+
+    max-width:700px;
+
+    margin:
+        0 auto 25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.stat{
+
+    min-width:130px;
+
+    padding:
+        12px 18px;
+
+    border:
+        1px solid
+        rgba(239,214,156,.15);
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-radius:15px;
+}
+
+.stat small{
+
+    display:block;
+
+    color:#9f898a;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+}
+
+.stat strong{
+
+    color:#efd69c;
+
+    font-size:18px;
+}
+
+
+/* =====================================================
+   HEART GAME
+===================================================== */
+
+.heart-game-area{
+
+    position:relative;
+
+    width:min(760px,100%);
+
+    height:460px;
+
+    margin:auto;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    border:
+        1px solid
+        rgba(239,214,156,.30);
+
+    background:
+
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(125,30,52,.28),
+            transparent 55%
+        ),
+
+        linear-gradient(
+            145deg,
+            rgba(93,20,38,.70),
+            rgba(18,4,8,.95)
+        );
+
+    box-shadow:
+
+        inset 0 0 70px
+        rgba(0,0,0,.55),
+
+        0 30px 90px
+        rgba(0,0,0,.35);
+}
+
+
+/* DECORATIVE CIRCLES */
+
+.heart-game-area::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    border-radius:50%;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid
+        rgba(239,214,156,.08);
+
+    box-shadow:
+        0 0 100px
+        rgba(239,214,156,.04);
+}
+
+.heart-game-area::after{
+
+    content:"✦     ♡     ✦";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:15px;
+
+    transform:
+        translateX(-50%);
+
+    color:
+        rgba(239,214,156,.22);
+
+    font-size:13px;
+
+    letter-spacing:15px;
+}
+
+
+/* HEART */
+
+.target-heart{
+
+    position:absolute;
+
+    width:72px;
+    height:72px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:55px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    z-index:5;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(255,60,100,.55)
+        );
+
+    animation:
+        targetFloat 1.5s
+        ease-in-out infinite;
+}
+
+.target-heart:hover{
+
+    transform:
+        scale(1.25);
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(255,100,140,.9)
+        );
+}
+
+@keyframes targetFloat{
+
+    0%,100%{
+        margin-top:0;
+    }
+
+    50%{
+        margin-top:-8px;
+    }
+}
+
+
+/* CLICK EFFECT */
+
+.click-effect{
+
+    position:absolute;
+
+    pointer-events:none;
+
+    z-index:20;
+
+    color:#f1d99b;
+
+    font-family:
+        "Great Vibes";
+
+    font-size:28px;
+
+    animation:
+        clickUp .8s
+        ease forwards;
+}
+
+@keyframes clickUp{
+
+    from{
+        opacity:1;
+
+        transform:
+            translate(-50%,0)
+            scale(.8);
+    }
+
+    to{
+        opacity:0;
+
+        transform:
+            translate(-50%,-60px)
+            scale(1.2);
+    }
+}
+
+
+/* GAME BOTTOM */
+
+.game-bottom{
+
+    margin-top:25px;
+
+    color:#927e7f;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.game-bottom span{
+    color:#e4c57c;
+}
+
+
+/* =====================================================
+   GAME RESULT
+===================================================== */
+
+.game-result{
+
+    display:none;
+
+    max-width:800px;
+
+    margin:
+        45px auto 0;
+
+    padding:
+        50px 30px;
+
+    border:
+        1px solid
+        rgba(239,214,156,.25);
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(120,30,50,.22),
+            transparent 65%
+        ),
+
+        rgba(255,255,255,.025);
+
+    animation:
+        resultAppear 1s ease;
+}
+
+.game-result.show{
+    display:block;
+}
+
+@keyframes resultAppear{
+
+    from{
+        opacity:0;
+
+        transform:
+            scale(.9);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            scale(1);
+    }
+}
+
+.result-heart{
+
+    font-size:80px;
+
+    animation:
+        heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+
+}
+
+.game-result h3{
+
+    margin:20px 0;
+
+    font-family:
+        "Great Vibes";
+
+    font-size:65px;
+
+    color:#efd69c;
+
+    font-weight:400;
+}
+
+.game-result p{
+
+    max-width:650px;
+
+    margin:15px auto;
+
+    color:#cdb9b7;
+
+    line-height:1.9;
+}
+
+.next-btn{
+
+    margin-top:20px;
+
+    padding:
+        14px 28px;
+
+    border-radius:50px;
+
+    border:
+        1px solid
+        rgba(239,214,156,.55);
+
+    background:#651b2a;
+
+    color:#f1d99b;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   STORY MODAL
+===================================================== */
+
+.story{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:500;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+
+    background:
+        rgba(5,1,3,.88);
+
+    backdrop-filter:
+        blur(15px);
+}
+
+.story.show{
+
+    display:flex;
+
+    animation:
+        fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+.story-box{
+
+    width:min(850px,100%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    padding:
+        clamp(
+            35px,
+            7vw,
+            75px
+        );
+
+    text-align:center;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0,
+            rgba(126,31,51,.3),
+            transparent 40%
+        ),
+
+        #160609;
+
+    border:
+        1px solid
+        rgba(239,214,156,.3);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.6);
+
+    position:relative;
+}
+
+.story-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:14px;
+
+    border:
+        1px solid
+        rgba(239,214,156,.12);
+
+    pointer-events:none;
+}
+
+.story-content{
+
+    position:relative;
+
+    z-index:2;
+}
+
+.story-small{
+
+    color:#d7b968;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+}
+
+.story-title{
+
+    margin:20px 0;
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            75px
+        );
+
+    color:#f1dfb4;
+
+    font-weight:400;
+}
+
+.story-script{
+
+    font-family:
+        "Great Vibes";
+
+    font-size:60px;
+
+    color:#e9c98b;
+}
+
+.story-text{
+
+    max-width:680px;
+
+    margin:25px auto;
+
+    color:#cdb9b7;
+
+    line-height:2;
+
+    font-size:16px;
+}
+
+.story-text strong{
+    color:#f1d99b;
+}
+
+.story-heart{
+
+    font-size:65px;
+
+    margin:25px 0;
+}
+
+.story-btn{
+
+    margin-top:15px;
+
+    padding:
+        13px 25px;
+
+    border-radius:50px;
+
+    border:
+        1px solid
+        rgba(239,214,156,.5);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:#efd69c;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   PROPOSAL
+===================================================== */
+
+.proposal{
+
+    min-height:90svh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #641b2b,
+            #18070a 65%
+        );
+}
+
+.proposal::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(239,214,156,.12);
+}
+
+.proposal-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:850px;
+}
+
+.ring{
+
+    font-size:70px;
+
+    margin:30px 0;
+
+    animation:
+        ring 3s
+        ease-in-out infinite;
+}
+
+@keyframes ring{
+
+    50%{
+        transform:
+            translateY(-10px)
+            rotate(3deg);
+    }
+}
+
+.proposal h2{
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:
+        clamp(
+            65px,
+            10vw,
+            120px
+        );
+
+    font-weight:400;
+
+    line-height:.7;
+
+    color:#f1dfb4;
+}
+
+.proposal h2 span{
+
+    display:block;
+
+    font-family:
+        "Great Vibes";
+
+    color:#e9c98b;
+
+    font-size:.8em;
+
+    line-height:1.3;
+}
+
+.proposal p{
+
+    max-width:680px;
+
+    margin:30px auto;
+
+    color:#d2c1be;
+
+    line-height:1.9;
+}
+
+.secret{
+
+    display:none;
+
+    margin-top:35px;
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:30px;
+
+    color:#efd69c;
+}
+
+.secret.show{
+
+    display:block;
+
+    animation:
+        appear 1s ease;
+}
+
+@keyframes appear{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:none;
+    }
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.final{
+
+    min-height:90svh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(112,25,42,.22),
+            transparent 35%
+        ),
+
+        #f7ecdf;
+
+    color:#4d1820;
+}
+
+.final h2{
+
+    font-family:
+        "Cormorant Garamond";
+
+    font-size:
+        clamp(
+            70px,
+            12vw,
+            150px
+        );
+
+    font-weight:400;
+
+    line-height:.7;
+}
+
+.final h2 span{
+
+    display:block;
+
+    font-family:
+        "Great Vibes";
+
+    color:#721d2c;
+
+    font-size:.8em;
+
+    line-height:1.3;
+}
+
+.final p{
+
+    max-width:700px;
+
+    margin:35px auto;
+
+    color:#80696b;
+
+    line-height:1.9;
+
+    font-size:17px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    padding:
+        35px 20px 60px;
+
+    text-align:center;
+
+    background:#090203;
+
+    color:#8d7677;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* =====================================================
+   CANDLE
+===================================================== */
+
+.candle{
+
+    position:fixed;
+
+    left:20px;
+    bottom:20px;
+
+    z-index:50;
+
+    width:25px;
+    height:55px;
+
+    border-radius:
+        8px 8px 4px 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d9c0a0,
+            #fff3d7,
+            #c7a887
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(255,184,91,.15);
+
+    opacity:.7;
+}
+
+.candle::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:10px;
+    height:18px;
+
+    left:50%;
+    top:-15px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            #fff5b1 0%,
+            #ffb32f 40%,
+            #e6461b 70%,
+            transparent 72%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            #ffae3a
+        );
+
+    animation:
+        flame .12s
+        infinite alternate;
+}
+
+@keyframes flame{
+
+    from{
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    to{
+        transform:
+            translateX(-50%)
+            scale(.85,1.12);
+    }
+}
+
+
+/* =====================================================
+   ROSES
+===================================================== */
+
+.rose{
+
+    position:fixed;
+
+    font-size:70px;
+
+    z-index:10;
+
+    pointer-events:none;
+
+    opacity:.35;
+}
+
+.rose-left{
+
+    left:-20px;
+
+    bottom:0;
+}
+
+.rose-right{
+
+    right:-20px;
+
+    top:20%;
+
+    transform:
+        rotate(20deg);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:750px){
+
+    section{
+        padding:90px 5%;
+    }
+
+    #musicBtn{
+
+        top:15px;
+
+        right:15px;
+
+        font-size:11px;
+    }
+
+    .hero h1{
+
+        font-size:
+            clamp(
+                70px,
+                20vw,
+                110px
+            );
+    }
+
+    .birthday{
+        padding:50px 25px;
+    }
+
+    .birthday h3{
+        font-size:48px;
+    }
+
+    .gallery-grid{
+
+        grid-template-columns:1fr;
+
+        grid-template-rows:
+            repeat(3,400px);
+    }
+
+    .photo-card:first-child{
+        grid-row:span 1;
+    }
+
+    .reason-grid{
+        grid-template-columns:1fr;
+    }
+
+    .letter{
+        padding:45px 25px;
+    }
+
+    .letter p{
+        font-size:18px;
+    }
+
+    .proposal h2{
+        font-size:70px;
+    }
+
+    .heart-game-area{
+
+        height:400px;
+
+        border-radius:22px;
+    }
+
+    .target-heart{
+
+        width:65px;
+        height:65px;
+
+        font-size:48px;
+    }
+
+    .game-result h3{
+        font-size:48px;
+    }
+
+    .story-box{
+        padding:35px 22px;
+    }
+
+    .story-text{
+        font-size:15px;
+    }
+
+}
+
+
+/* =====================================================
+   EXTRA SMALL
+===================================================== */
+
+@media(max-width:450px){
+
+    .heart-game-area{
+        height:360px;
+    }
+
+    .game-stats{
+        gap:7px;
+    }
+
+    .stat{
+        min-width:105px;
+        padding:10px;
+    }
+
+    .stat strong{
+        font-size:15px;
+    }
+
+}
+
+.photo-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:1.2s ease;
+}
+
+.photo-card:hover video{
+    transform:scale(1.08);
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div id="bg"></div>
+
+<div id="grain"></div>
+
+<div id="petals"></div>
+
+<div class="candle"></div>
+
+<div class="rose rose-left">
+    🌹
+</div>
+
+<div class="rose rose-right">
+    🌹
+</div>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<div id="intro">
+
+    <div class="intro-content">
+
+        <div class="intro-small">
+            A LITTLE BIRTHDAY STORY · MADE BY ALDI
+        </div>
+
+        <div class="intro-script">
+            For Susi Sayang
+        </div>
+
+        <div class="intro-title">
+            Eternal Love
+        </div>
+
+        <p class="intro-text">
+
+            Sebuah halaman kecil
+            yang aku buat khusus untuk ngan.
+
+            <br><br>
+
+            Tidak harus sempurna,
+            karena yang paling penting
+            adalah rasa yang ada
+            di balik setiap kata.
+
+            <br><br>
+
+            Jadi baca pelan-pelan, sayang.
+
+        </p>
+
+        <button
+            class="open-btn"
+            id="openBtn">
+
+            Open Your Letter ✦
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<button id="musicBtn">
+
+    ♫ &nbsp; Play Our Song
+
+</button>
+
+<audio
+    id="music"
+    loop
+    src="lagu-romantis.mp3">
+</audio>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+
+            18 · 09 · 2004 ·
+            A DAY WORTH REMEMBERING
+
+        </div>
+
+        <h1>
+
+            For
+
+            <span>
+                Susi Sayang
+            </span>
+
+        </h1>
+
+
+        <!-- FOTO SUSI -->
+
+        <div class="hero-photo">
+
+            <img
+                src="foto/susi.jpg"
+                alt="Susi Sayang">
+
+            <div class="hero-photo-glow"></div>
+
+        </div>
+
+
+        <p class="hero-description">
+
+            Untuk seseorang yang kehadirannya
+            membuat banyak hal sederhana
+            terasa lebih berarti.
+
+            <br><br>
+
+            Selamat datang di sebuah hadiah kecil,
+            dari Aldi untuk kamu.
+
+        </p>
+
+
+        <div class="hero-date">
+
+            WITH LOVE · ALDI JULIYANTO
+
+        </div>
+
+        <div class="hero-love">
+
+            for the girl I love ♡
+
+        </div>
+
+        <div class="scroll">
+
+            take your time
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BIRTHDAY
+===================================================== -->
+
+<section class="light">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+
+            YOUR SPECIAL DAY
+
+        </div>
+
+        <h2>
+
+            Happy Birthday,
+
+            <br>
+
+            Susi Sayang
+
+        </h2>
+
+        <div class="divider">
+            ✦
+        </div>
+
+        <p>
+
+            Hari ini adalah tentang kamu.
+
+            Semoga usia baru ini membawa
+            lebih banyak ketenangan,
+            kebahagiaan,
+            kesehatan,
+            dan semua hal baik
+            yang kamu doakan.
+
+        </p>
+
+    </div>
+
+
+    <div class="birthday reveal">
+
+        <div class="cake">
+            🎂
+        </div>
+
+        <h3>
+            Make a wish, sayang.
+        </h3>
+
+        <p>
+
+            Pejamkan mata sebentar.
+
+            <br><br>
+
+            Simpan satu doa yang paling
+            kamu inginkan.
+
+            <br><br>
+
+            Semoga satu per satu
+            menemukan jalannya.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LETTER
+===================================================== -->
+
+<section class="letter-section">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+
+            A LETTER FROM ALDI
+
+        </div>
+
+        <h2>
+
+            Untuk kamu,
+
+            <br>
+
+            sayang.
+
+        </h2>
+
+        <div class="divider">
+            ♡
+        </div>
+
+    </div>
+
+
+    <div class="letter reveal">
+
+        <div class="letter-content">
+
+            <div class="letter-script">
+                Dear Susi,
+            </div>
+
+
+            <p>
+
+               Selamat ulang tahun, sayang. Aku mungkin dede selalu pandai menyampaikan ape yang aku rasekan, jadi kali ini aku ingin menuliskannya pelan-pelan.
+            </p>
+
+
+            <p>
+
+                Terima kasih sude hadir di hidup aku. Terima kasih untuk setiap cerite, tawe, perhatian, dan waktu yang sude ngan kasih. Banyak dari semuenye mungkin terlihat sederhane, tapi justru hal-hal kecil itu lah yang sering aku ingat.
+            </p>
+
+
+            <p>
+
+                Aku dede berharap hubungan kite
+                selalu sempurne.
+
+                Pasti akan ade hari dimane ketike kite
+                beda pendapat, same-same capek,
+                atau mungkin dede tahu harus bagaimane.
+
+                Tapi aku ingin belajar untuk tetap ade,
+                bukan cuma ketike semuanye mudah.
+
+            </p>
+
+
+            <p>
+
+                Aku ingin terus mengenal ngan,
+                memahami ngan lebih baik,
+                dan menjadi seseorang
+                yang pacak ngan percaye.
+
+            </p>
+
+
+            <p>
+
+                Di ulang tahun ngan ini,
+                doa aku sederhane.
+
+                Semoga ngan selalu sehat,
+                semoga langkah ngan dimudahkan,
+                semoga ape yang sedang ngan perjuangkan
+                menemukan hasil yang baik.
+
+            </p>
+
+
+            <p>
+
+                Dan kalau Tuhan mengizinkan,
+                kalau kite masih terus berjalan bersame,
+                dan kalau kele aku sude
+                benar-benar siap...
+
+            </p>
+
+
+            <p>
+
+                <strong>
+
+                    Aku ingin suatu hari kele
+                    pacak melamarmu, sayang.
+
+                </strong>
+
+            </p>
+
+
+            <p>
+
+                Bukan hanya karena aku ingin memiliki ngan,
+                tapi karene aku ingin datang
+                dengan kesiapan untuk menjage,
+                menghargai, dan membangun kehidupan
+                bersama ngan.
+
+            </p>
+
+
+            <p>
+
+                Kalau kele waktunya tibe,
+                semoga aku masih menjadi
+                orang yang ngan pilih.
+
+            </p>
+
+
+            <p>
+
+                Selamat ulang tahun, sayangku.
+
+                Terima kasih sude lahir.
+
+                Terima kasih sude hadir.
+
+                Dan terima kasih karene sampai hari ini
+                ngan masih menjadi seseorang
+                yang begitu aku sayangi.
+
+            </p>
+
+
+            <div class="signature">
+
+                Always,
+
+                <br>
+
+                Aldi
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<section class="gallery">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+
+            OUR LITTLE MEMORIES
+
+        </div>
+
+        <h2>
+
+            Moments Worth
+
+            <br>
+
+            Keeping.
+
+        </h2>
+
+        <div class="divider">
+            ✦
+        </div>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+
+<div class="photo-card reveal">
+
+    <video
+        src="video/video1.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        controls>
+    </video>
+
+    <div class="photo-info">
+
+        <small>
+            01 · OUR BEGINNING
+        </small>
+
+        <h3>
+            The Beginning
+        </h3>
+
+    </div>
+
+</div>
+
+
+        <div class="photo-card reveal">
+
+            <img
+                src="foto/foto2.jpeg"
+                alt="Kenangan Susi">
+
+            <div class="photo-info">
+
+                <small>
+                    02 · MY FAVORITE
+                </small>
+
+                <h3>
+                    A Favorite Moment
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="photo-card reveal">
+
+            <img
+                src="foto/foto3.jpeg"
+                alt="Susi Sayang">
+
+            <div class="photo-info">
+
+                <small>
+                    03 · FOREVER
+                </small>
+
+                <h3>
+                    With You
+                </h3>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     REASONS
+===================================================== -->
+
+<section class="reasons">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+            LITTLE THINGS
+        </div>
+
+        <h2>
+            Why I Love You
+        </h2>
+
+        <div class="divider">
+            ♡
+        </div>
+
+        <p>
+
+            Kalu ditanye alasannye,
+            sebenarnye tige, tujuh,
+            bahkan seribu pun dede akan cukup.
+
+        </p>
+
+    </div>
+
+
+    <div class="reason-grid">
+
+
+        <div class="reason reveal">
+
+            <small>
+                01 · YOUR SMILE
+            </small>
+
+            <h3>
+                Senyummu
+            </h3>
+
+            <p>
+
+                Melihat ngan tersenyum
+                sering kali lah  cukup
+                membuat hari aku terasa lebih baik.
+
+            </p>
+
+        </div>
+
+
+        <div class="reason reveal">
+
+            <small>
+                02 · YOUR HEART
+            </small>
+
+            <h3>
+                Hatimu
+            </h3>
+
+            <p>
+
+                Cara ngan peduli terhadap
+                hal-hal kecil adalah sesuatu
+                yang selalu aku hargei.
+
+            </p>
+
+        </div>
+
+
+        <div class="reason reveal">
+
+            <small>
+                03 · YOURSELF
+            </small>
+
+            <h3>
+                Dirimu
+            </h3>
+
+            <p>
+
+                Aku dede butuh ngan
+                menjadi sempurne.
+
+                Aku sayang ngan
+                karene ngan adalah kamu.
+
+            </p>
+
+        </div>
+
+
+        <div class="reason reveal">
+
+            <small>
+                04 · YOUR LAUGH
+            </small>
+
+            <h3>
+                Tawamu
+            </h3>
+
+            <p>
+
+                Ade sesuatu dari tawe ngan
+                yang selalu membuat suasane
+                terasa lebih ringan.
+
+            </p>
+
+        </div>
+
+
+        <div class="reason reveal">
+
+            <small>
+                05 · YOUR STRENGTH
+            </small>
+
+            <h3>
+                Kekuatanmu
+            </h3>
+
+            <p>
+
+                Aku bangge melihat ngan
+                terus melangkah meskipun
+                ada hari-hari yang dede mudah.
+
+            </p>
+
+        </div>
+
+
+        <div class="reason reveal">
+
+            <small>
+                06 · YOUR PRESENCE
+            </small>
+
+            <h3>
+                Kehadiranmu
+            </h3>
+
+            <p>
+
+                ngan dede harus melakukan
+                sesuatu yang besar.
+
+                Tahu ngan ade kian
+                sude berarti.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GAME BARU
+===================================================== -->
+
+<section
+    class="game-section"
+    id="game">
+
+
+    <div class="game-box">
+
+
+        <!-- INTRO GAME -->
+
+        <div class="game-intro">
+
+            <div class="eyebrow">
+                A LITTLE GAME FOR YOU
+            </div>
+
+
+            <h2>
+
+                Tangkap
+
+                <span>
+                    hatiku, Susi ♡
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Sebelum ngan melanjutkan perjalanan
+                di halaman ini...
+
+                <br><br>
+
+                Aku ade satu permainan kecil
+                untuk ngan.
+
+                <br><br>
+
+                Di dalam kotak ini,
+                hatiku akan terus berpindah.
+
+                <br>
+
+                <strong>
+                    Tugas ngan cuma satu:
+                    tangkap semuanye. ❤️
+                </strong>
+
+                <br><br>
+
+                ngan punya waktu
+                <strong>30 detik.</strong>
+
+            </p>
+
+
+            <button
+                class="game-start"
+                id="startGame">
+
+                Mulai Permainan ♡
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             GAME SCREEN
+        ================================================= -->
+
+        <div
+            class="game-screen"
+            id="gameScreen">
+
+
+            <div class="game-message">
+
+                <h3 id="gameTitle">
+
+                    Tangkap 10 Hatiku ❤️
+
+                </h3>
+
+
+                <p id="gameDescription">
+
+                    Klik hati yang muncul
+                    sebelum waktunye habis.
+
+                </p>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="game-stats">
+
+
+                <div class="stat">
+
+                    <small>
+                        WAKTU
+                    </small>
+
+                    <strong id="timer">
+                        30
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        HATI
+                    </small>
+
+                    <strong id="found">
+                        0 / 10
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        KOMBO
+                    </small>
+
+                    <strong id="combo">
+                        x0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        SKOR
+                    </small>
+
+                    <strong id="score">
+                        0
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- GAME AREA -->
+
+            <div
+                class="heart-game-area"
+                id="heartGameArea">
+
+                <!-- HATI AKAN MUNCUL DI SINI -->
+
+            </div>
+
+
+            <div class="game-bottom">
+
+                Klik hati sebanyak mungkin.
+
+                <br>
+
+                <span>
+                    Semakin cepat ngan menangkapnye,
+                    semakin tinggi skornye. ♡
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             RESULT
+        ================================================= -->
+
+        <div
+            class="game-result"
+            id="gameResult">
+
+
+            <div class="result-heart">
+                ❤️
+            </div>
+
+
+            <h3>
+                Kamu berhasil!
+            </h3>
+
+
+            <p id="resultText">
+
+                ngan berhasil menangkap
+                semua hati yang aku sembunyikan.
+
+            </p>
+
+
+            <button
+                class="next-btn"
+                id="nextStory">
+
+                Lanjut... ♡
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STORY MODAL
+===================================================== -->
+
+<div
+    class="story"
+    id="story">
+
+
+    <div class="story-box">
+
+
+        <div class="story-content">
+
+
+            <div class="story-small">
+
+                A LITTLE TRUTH FROM ALDI
+
+            </div>
+
+
+            <div class="story-heart">
+                ❤️
+            </div>
+
+
+            <div class="story-title">
+
+                Hal terakhir...
+
+            </div>
+
+
+            <div class="story-text">
+
+
+                <p>
+
+                    Ini bukan sesuatu yang pacak
+                    ngan buka dengan klik.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    Karene sebenarnya...
+                </p>
+
+
+                <br>
+
+
+                <div class="story-script">
+                    ngan.
+                </div>
+
+
+                <br>
+
+
+                <p>
+
+                    Dari semue hal yang pacak aku ceritekan,
+                    ternyate bagian paling penting
+                    dari cerita ini adalah ngan.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    <strong>Susi.</strong>
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Aku dede tahu apekah aku orang  yang terbaik
+                    yang pernah ngan temui.
+
+                    Aku juge tahu aku masih banyak kurangnye.
+
+                </p>
+
+
+                <p>
+
+                    Kadang mungkin aku buat ngan kesel.
+
+                    Kadang aku dede peka.
+
+                    Kadang aku juga dede tahu
+                    bagaimane care menjelaskan ape
+                    yang ada di kepalaku.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    Tapi satu hal yang aku tahu...
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    <strong>
+
+                        aku dede pernah menganggap
+                        kehadiran ngan sebagai sesuatu
+                        yang biase.
+
+                    </strong>
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Kalau suatu hari nanti kite sedang
+                    same-same sibuk...
+
+                </p>
+
+
+                <p>
+
+                    kalau nanti kite punye masalah...
+
+                </p>
+
+
+                <p>
+
+                    kalu kele ade hari ketike kita
+                    same-same capek...
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    aku harap kite dede langsung
+                    memilih untuk menyerah.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Karene aku dede ingin hubungan ini
+                    cuma menjadi cerite indah
+                    yang pernah kita punye.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    <strong>
+
+                        Aku ingin kite menjadi cerite
+                        yang terus kita tulis bersame.
+
+                    </strong>
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Pelan-pelan.
+
+                    <br>
+
+                    Sampai kite benar-benar tahu
+                    sejauh ape kita pacak pergi.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Aku dede pacak menjanjikan
+                    hidup kite kele akan selalu mudah.
+
+                </p>
+
+
+                <p>
+
+                    Tapi kalau ngan masih galak
+                    berjalan bersameku...
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    <strong>
+
+                        aku ingin belajah  menghadapi
+                        susah dan senangnye same-same.
+
+                    </strong>
+
+                </p>
+
+
+            </div>
+
+
+            <button
+                class="story-btn"
+                id="openFinal">
+
+                Ade satu pesan lagi... 💌
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FINAL STORY
+===================================================== -->
+
+<div
+    class="story"
+    id="finalStory">
+
+
+    <div class="story-box">
+
+
+        <div class="story-content">
+
+
+            <div class="story-small">
+
+                FROM ALDI · ONLY FOR YOU
+
+            </div>
+
+
+            <div class="story-heart">
+                💌
+            </div>
+
+
+            <div class="story-script">
+
+                Sayang...
+
+            </div>
+
+
+            <div class="story-text">
+
+
+                <p>
+
+                    Aku pernah membayangkan satu hari.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Hari ketike aku dede lagi cuma bilang
+
+                    <strong>
+                        “Selamat ulang tahun.”
+                    </strong>
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Tapi aku pacak berdiri di depan ngan,
+                    melihat ngan,
+                    lalu mengatakan sesuatu
+                    yang jauh lebih serius.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Sesuatu yang dede pacak lagi
+                    cuma ditulis di website seperti ini.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    <strong>
+
+                        “Susi, maukah ngan menjadi orang
+                        yang aku temui setiap pagi,
+                        orang yang aku cari ketike hari sedang berat,
+                        dan orang yang ingin aku pulangi?”
+
+                    </strong>
+
+                </p>
+
+
+                <div
+                    style="
+                    font-size:65px;
+                    margin:25px 0;
+                    ">
+
+                    💍
+
+                </div>
+
+
+                <p>
+                    Aku belum tahu kapan hari itu.
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    Tapi...
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    <strong>
+
+                        aku berharap suatu hari kele,
+                        orang yang berdiri di hadapanku
+                        masih ngan.
+
+                    </strong>
+
+                </p>
+
+
+                <br><br>
+
+
+                <p>
+
+                    Kalau suatu hari kele ngan membuka
+                    halaman ini lagi,
+                    mungkin kite sudah jauh lebih dewasa.
+
+                </p>
+
+
+                <p>
+
+                    Mungkin banyak hal sude berubah.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Tapi aku berharap satu hal
+                    tidak berubah...
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    <strong>
+
+                        semoge orang yang membace pesan ini
+                        masih menjadi orang yang same
+                        yang sekarang sedang aku sayangi.
+
+                    </strong>
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Aku dede tahu masa depan akan
+                    membawa kite ke mane.
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Tapi kalau kele aku diberi
+                    kesempatan untuk memilih lagi...
+
+                </p>
+
+
+                <br>
+
+
+                <p
+                    style="font-size:22px;">
+
+                    <strong>
+
+                        aku tetap ingin memilih ngan.
+
+                    </strong>
+
+                </p>
+
+
+                <div
+                    style="
+                    font-size:60px;
+                    margin:30px 0;
+                    ">
+
+                    ❤️
+
+                </div>
+
+
+                <p>
+
+                    <strong>
+
+                        Happy Birthday,
+                        Susi Sayang.
+
+                    </strong>
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Terima kasih sude lahir.
+
+                    <br>
+
+                    Terima kasih sude hadir.
+
+                    <br>
+
+                    Dan terima kasih...
+
+                    <br>
+
+                    karena pernah menjadi bagian
+                    dari cerita hidupku.
+
+                </p>
+
+
+                <br>
+
+
+                <p
+                    style="
+                    font-family:'Great Vibes';
+                    font-size:35px;
+                    color:#efd69c;
+                    ">
+
+                    — Aldi
+
+                </p>
+
+
+                <br>
+
+
+                <p
+                    style="
+                    font-size:13px;
+                    color:#927e7f;
+                    ">
+
+               
+
+                </p>
+
+
+            </div>
+
+
+            <button
+                class="story-btn"
+                onclick="closeFinal()">
+
+                ♡ Tutup Pesan
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PROPOSAL
+===================================================== -->
+
+<section class="proposal">
+
+
+    <div class="proposal-content">
+
+
+        <div class="eyebrow">
+
+            A HOPE FOR SOMEDAY
+
+        </div>
+
+
+        <div class="ring">
+            💍
+        </div>
+
+
+        <h2>
+
+            Perhaps,
+
+            <span>
+                one day...
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Aku dede tahu kapan waktunye akan datang.
+
+            Tapi kalau suatu hari nanti aku sudae siap
+            untuk membawe hubungan ini ke langkah
+            yang lebih serius,
+            aku ingin orang yang ada di hadapanku
+            tetap ngan.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+
+                Semoga suatu hari nanti
+                aku pacak datang ke ngan
+                bukan hanya dengan ucapan ulang tahun,
+                tetapi dengan sebuah cincin
+                dan satu pertanyaan
+                yang sude lame kusimpan.
+
+            </strong>
+
+        </p>
+
+
+        <div
+            class="secret"
+            id="secret">
+
+            “Maukah kamu menjadi rumah
+            yang ingin aku tuju seumur hidup?”
+
+            💍
+
+        </div>
+
+
+        <button
+            class="proposal-btn"
+            id="proposalBtn">
+
+            Buka Pesan Terakhir
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL
+===================================================== -->
+
+<section class="final">
+
+
+    <div>
+
+
+        <div class="eyebrow">
+
+            FROM ALDI, WITH LOVE
+
+        </div>
+
+
+        <h2>
+
+            For
+
+            <span>
+                Susi Sayang
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Semoga suatu hari nanti,
+            kite pacak membuka halaman ini lagi
+            sambil tersenyum dan berkata:
+
+            <br><br>
+
+            <em>
+
+                “Ternyate kite benar-benar
+                sampai sejauh ini.”
+
+            </em>
+
+        </p>
+
+
+        <div
+            style="
+            font-size:60px;
+            margin-top:35px;
+            ">
+
+            ♡
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    Made With Love By Aldi Juliyanto
+
+    · For Susi Sayang
+
+    · 18 September 2026
+
+</footer>
+
+
+<script>
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+const intro =
+    document.getElementById("intro");
+
+const openBtn =
+    document.getElementById("openBtn");
+
+const music =
+    document.getElementById("music");
+
+const musicBtn =
+    document.getElementById("musicBtn");
+
+let musicPlaying=false;
+
+
+openBtn.addEventListener(
+    "click",
+    function(){
+
+        intro.classList.add("hide");
+
+        createPetals(45);
+
+        music.play()
+        .then(()=>{
+
+            musicPlaying=true;
+
+            musicBtn.innerHTML=
+                "Ⅱ &nbsp; Our Song Playing";
+
+        })
+        .catch(()=>{});
+
+    }
+);
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+musicBtn.addEventListener(
+    "click",
+    async function(){
+
+        try{
+
+            if(musicPlaying){
+
+                music.pause();
+
+                musicPlaying=false;
+
+                musicBtn.innerHTML=
+                    "♫ &nbsp; Play Our Song";
+
+            }else{
+
+                await music.play();
+
+                musicPlaying=true;
+
+                musicBtn.innerHTML=
+                    "Ⅱ &nbsp; Our Song Playing";
+
+            }
+
+        }catch(error){
+
+            alert(
+                "Pastikan file lagu-romantis.mp3 ada di folder website."
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   PETALS
+===================================================== */
+
+function createPetals(number){
+
+    const container =
+        document.getElementById("petals");
+
+
+    for(
+        let i=0;
+        i<number;
+        i++
+    ){
+
+        const petal =
+            document.createElement("div");
+
+        petal.className="petal";
+
+        petal.textContent =
+            Math.random()>.25
+            ? "🌹"
+            : "✦";
+
+        petal.style.left =
+            Math.random()*100+"vw";
+
+        petal.style.setProperty(
+            "--x",
+            (Math.random()*300-150)+"px"
+        );
+
+        petal.style.fontSize =
+            (12+Math.random()*18)+"px";
+
+        petal.style.animationDuration =
+            (7+Math.random()*7)+"s";
+
+        petal.style.animationDelay =
+            Math.random()*3+"s";
+
+        container.appendChild(petal);
+
+
+        setTimeout(
+            ()=>{
+                petal.remove();
+            },
+            17000
+        );
+
+    }
+
+}
+
+
+setInterval(
+    ()=>{
+        createPetals(2);
+    },
+    3500
+);
+
+
+createPetals(20);
+
+
+/* =====================================================
+   GAME
+   CATCH MY HEART
+===================================================== */
+
+const startGame =
+    document.getElementById("startGame");
+
+const gameScreen =
+    document.getElementById("gameScreen");
+
+const gameArea =
+    document.getElementById("heartGameArea");
+
+const timerElement =
+    document.getElementById("timer");
+
+const foundElement =
+    document.getElementById("found");
+
+const comboElement =
+    document.getElementById("combo");
+
+const scoreElement =
+    document.getElementById("score");
+
+const gameTitle =
+    document.getElementById("gameTitle");
+
+const gameDescription =
+    document.getElementById("gameDescription");
+
+const gameResult =
+    document.getElementById("gameResult");
+
+const resultText =
+    document.getElementById("resultText");
+
+const nextStory =
+    document.getElementById("nextStory");
+
+
+/* GAME VARIABLES */
+
+let heartsCaught=0;
+
+let gameScore=0;
+
+let combo=0;
+
+let timeLeft=30;
+
+let gameTimer=null;
+
+let heartTimer=null;
+
+let gameRunning=false;
+
+const targetTotal=10;
+
+
+/* =====================================================
+   START GAME
+===================================================== */
+
+startGame.addEventListener(
+    "click",
+    startHeartGame
+);
+
+
+function startHeartGame(){
+
+    gameScreen.classList.add("active");
+
+    gameResult.classList.remove("show");
+
+    heartsCaught=0;
+
+    gameScore=0;
+
+    combo=0;
+
+    timeLeft=30;
+
+    gameRunning=true;
+
+
+    timerElement.textContent=
+        timeLeft;
+
+    foundElement.textContent=
+        "0 / 10";
+
+    comboElement.textContent=
+        "x0";
+
+    scoreElement.textContent=
+        "0";
+
+
+    gameTitle.textContent=
+        "Tangkap 10 Hatiku ❤️";
+
+    gameDescription.textContent=
+        "Klik hati yang muncul sebelum waktunya habis.";
+
+
+    gameArea.innerHTML="";
+
+
+    clearInterval(gameTimer);
+
+    clearInterval(heartTimer);
+
+
+    /* TIMER */
+
+    gameTimer =
+        setInterval(
+            function(){
+
+                timeLeft--;
+
+                timerElement.textContent=
+                    timeLeft;
+
+
+                if(timeLeft<=10){
+
+                    timerElement.style.color=
+                        "#ff758d";
+
+                }
+
+
+                if(timeLeft<=0){
+
+                    endHeartGame(false);
+
+                }
+
+            },
+            1000
+        );
+
+
+    /* FIRST HEART */
+
+    spawnHeart();
+
+
+    /*
+       Hati baru muncul setiap
+       sekitar 1.1 detik.
+    */
+
+    heartTimer =
+        setInterval(
+            function(){
+
+                if(gameRunning){
+
+                    spawnHeart();
+
+                }
+
+            },
+            1100
+        );
+
+
+    setTimeout(
+        ()=>{
+            gameScreen.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+        },
+        200
+    );
+
+}
+
+
+/* =====================================================
+   SPAWN HEART
+===================================================== */
+
+function spawnHeart(){
+
+    if(!gameRunning){
+        return;
+    }
+
+
+    /* Jangan terlalu banyak */
+
+    const oldHeart =
+        document.querySelector(
+            ".target-heart"
+        );
+
+    if(oldHeart){
+
+        oldHeart.remove();
+
+    }
+
+
+    const heart =
+        document.createElement("div");
+
+    heart.className=
+        "target-heart";
+
+    heart.textContent=
+        Math.random()>.15
+        ? "❤️"
+        : "💖";
+
+
+    /*
+       Posisi acak tetapi tetap
+       aman dari tepi.
+    */
+
+    const areaWidth =
+        gameArea.clientWidth;
+
+    const areaHeight =
+        gameArea.clientHeight;
+
+
+    const heartSize=75;
+
+
+    const x =
+        Math.random() *
+        (areaWidth-heartSize-30)
+        +15;
+
+
+    const y =
+        Math.random() *
+        (areaHeight-heartSize-70)
+        +15;
+
+
+    heart.style.left=
+        x+"px";
+
+    heart.style.top=
+        y+"px";
+
+
+    heart.addEventListener(
+        "click",
+        function(e){
+
+            e.stopPropagation();
+
+            catchHeart(
+                heart,
+                x,
+                y
+            );
+
+        }
+    );
+
+
+    gameArea.appendChild(heart);
+
+}
+
+
+/* =====================================================
+   CATCH HEART
+===================================================== */
+
+function catchHeart(
+    heart,
+    x,
+    y
+){
+
+    if(!gameRunning){
+        return;
+    }
+
+
+    heart.remove();
+
+
+    heartsCaught++;
+
+    combo++;
+
+
+    /*
+       Semakin tinggi combo,
+       semakin banyak poin.
+    */
+
+    const points =
+        100 +
+        (combo-1)*25;
+
+
+    gameScore += points;
+
+
+    foundElement.textContent =
+        heartsCaught+" / 10";
+
+
+    comboElement.textContent =
+        "x"+combo;
+
+
+    scoreElement.textContent =
+        gameScore;
+
+
+    createClickEffect(
+        x,
+        y,
+        "+"+points
+    );
+
+
+    createPetals(3);
+
+
+    /* MESSAGE */
+
+    const messages=[
+
+        "Nah! Ketemu satu ❤️",
+
+        "Cepat sekali kamu, Sayang 😌",
+
+        "Itu hatiku... jangan dilepas 🤭",
+
+        "Satu lagi untuk kamu ❤️",
+
+        "Kamu memang pandai mencari hatiku.",
+
+        "Hampir selesai, Sayang ♡"
+
+    ];
+
+
+    gameDescription.textContent =
+        messages[
+            Math.floor(
+                Math.random()*messages.length
+            )
+        ];
+
+
+    /* WIN */
+
+    if(heartsCaught>=targetTotal){
+
+        endHeartGame(true);
+
+    }
+
+}
+
+
+/* =====================================================
+   CLICK EFFECT
+===================================================== */
+
+function createClickEffect(
+    x,
+    y,
+    text
+){
+
+    const effect =
+        document.createElement("div");
+
+    effect.className=
+        "click-effect";
+
+    effect.textContent=
+        text;
+
+    effect.style.left=
+        x+"px";
+
+    effect.style.top=
+        y+"px";
+
+
+    gameArea.appendChild(effect);
+
+
+    setTimeout(
+        ()=>{
+            effect.remove();
+        },
+        800
+    );
+
+}
+
+
+/* =====================================================
+   END GAME
+===================================================== */
+
+function endHeartGame(won){
+
+    if(!gameRunning){
+        return;
+    }
+
+
+    gameRunning=false;
+
+
+    clearInterval(gameTimer);
+
+    clearInterval(heartTimer);
+
+
+    const heart =
+        document.querySelector(
+            ".target-heart"
+        );
+
+    if(heart){
+        heart.remove();
+    }
+
+
+    if(won){
+
+        winHeartGame();
+
+    }else{
+
+        loseHeartGame();
+
+    }
+
+}
+
+
+/* =====================================================
+   WIN
+===================================================== */
+
+function winHeartGame(){
+
+    /*
+       Bonus jika masih ada waktu.
+    */
+
+    const timeBonus =
+        timeLeft*20;
+
+
+    gameScore +=
+        timeBonus;
+
+
+    scoreElement.textContent=
+        gameScore;
+
+
+    gameTitle.textContent=
+        "Kamu berhasil menangkap hatiku ❤️";
+
+
+    gameDescription.textContent=
+        "Aku kira kamu nggak akan berhasil... ternyata kamu memang jago.";
+
+    
+    resultText.innerHTML=`
+
+        Kamu berhasil menangkap
+        <strong>10 hati</strong>
+        dalam permainan ini.
+
+        <br><br>
+
+        Skor kamu:
+
+        <strong>
+            ${gameScore}
+        </strong>
+
+        <br><br>
+
+        Tapi sebenarnye...
+
+        <br><br>
+
+        <strong>
+            hati yang paling penting
+            dari semue ini lah lame
+            aku njok ke ngan.
+        </strong>
+
+        <br><br>
+
+        ❤️
+
+    `;
+
+
+    gameResult.classList.add("show");
+
+
+    createPetals(70);
+
+
+    gameResult.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+}
+
+
+/* =====================================================
+   LOSE
+===================================================== */
+
+function loseHeartGame(){
+
+    gameTitle.textContent=
+        "Waktunye habis... ❤️";
+
+    gameDescription.textContent=
+        "Belum semue hatiku berhasil ngan tangkap.";
+
+
+    resultText.innerHTML=`
+
+        Waktu ngan lah habis.
+
+        <br><br>
+
+        Tapi jangan sedih, Sayang.
+
+        <br><br>
+
+        Mungkin sebenarnye
+        aku memang sengaje menyembunyikan
+        beberapa hati terlalu jauh.
+
+        <br><br>
+
+        Karena aku masih ingin
+        ngan tinggal sedikit lebih lame
+        di sini. ❤️
+
+        <br><br>
+
+        <button
+            class="next-btn"
+            onclick="restartHeartGame()">
+
+            Coba Lagi ♡
+
+        </button>
+
+    `;
+
+
+    gameResult.classList.add("show");
+
+
+    gameResult.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restartHeartGame(){
+
+    gameResult.classList.remove("show");
+
+    setTimeout(
+        ()=>{
+            startHeartGame();
+        },
+        300
+    );
+
+}
+
+
+/* =====================================================
+   NEXT STORY
+===================================================== */
+
+nextStory.addEventListener(
+    "click",
+    function(){
+
+        document
+            .getElementById("story")
+            .classList.add("show");
+
+
+        createPetals(40);
+
+    }
+);
+
+
+/* =====================================================
+   OPEN FINAL STORY
+===================================================== */
+
+document
+    .getElementById("openFinal")
+    .addEventListener(
+        "click",
+        function(){
+
+            document
+                .getElementById("story")
+                .classList.remove("show");
+
+
+            setTimeout(
+                function(){
+
+                    document
+                        .getElementById("finalStory")
+                        .classList.add("show");
+
+
+                    createPetals(60);
+
+                },
+                400
+            );
+
+        }
+    );
+
+
+/* =====================================================
+   CLOSE FINAL
+===================================================== */
+
+function closeFinal(){
+
+    document
+        .getElementById("finalStory")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+document
+    .getElementById("story")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(e.target===this){
+
+                this.classList.remove("show");
+
+            }
+
+        }
+    );
+
+
+document
+    .getElementById("finalStory")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(e.target===this){
+
+                this.classList.remove("show");
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   PROPOSAL
+===================================================== */
+
+const proposalBtn =
+    document.getElementById(
+        "proposalBtn"
+    );
+
+const secret =
+    document.getElementById(
+        "secret"
+    );
+
+
+proposalBtn.addEventListener(
+    "click",
+    function(){
+
+        secret.classList.toggle(
+            "show"
+        );
+
+
+        createPetals(30);
+
+
+        if(
+            secret.classList.contains(
+                "show"
+            )
+        ){
+
+            proposalBtn.textContent=
+                "♡ Untuk Susi Sayang";
+
+        }else{
+
+            proposalBtn.textContent=
+                "Buka Pesan Terakhir";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add("show");
+
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+revealElements.forEach(
+    function(element){
+
+        observer.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =====================================================
+   ESC CLOSE
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key==="Escape"){
+
+            document
+                .getElementById("story")
+                .classList
+                .remove("show");
+
+
+            document
+                .getElementById("finalStory")
+                .classList
+                .remove("show");
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
