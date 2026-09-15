@@ -2325,13 +2325,179 @@ footer{
 .photo-card:hover video{
     transform:scale(1.08);
 }
+
+/* ================================
+   AUTO SCROLL
+================================ */
+
+html.auto-scrolling {
+    scroll-behavior: auto !important;
+}
+
+#autoScrollBtn {
+    position: fixed;
+    right: 20px;
+    bottom: 22px;
+    z-index: 300;
+    
+    padding: 11px 18px;
+    border-radius: 50px;
+    border: 1px solid rgba(201,164,91,.7);
+    
+    background: rgba(15,4,7,.88);
+    color: var(--gold-light);
+    
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    
+    cursor: pointer;
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        background .3s ease;
+}
+
+#autoScrollBtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#autoScrollBtn:hover {
+    background: rgba(75,16,27,.95);
+}
+
+#autoScrollBtn:active {
+    transform: scale(.96);
+}
+
+/* HP */
+@media (max-width: 600px) {
+    #autoScrollBtn {
+        right: 15px;
+        bottom: 15px;
+        padding: 10px 15px;
+        font-size: 11px;
+    }
+}
+
+/* Kalau user memilih reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===== DATE LOCK / COUNTDOWN ===== */
+#dateLock {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    background:
+        radial-gradient(circle at 50% 35%, rgba(116,29,48,.45), transparent 45%),
+        linear-gradient(135deg, #090204, #260910, #090204);
+    color: var(--cream);
+    transition: opacity .8s ease, visibility .8s ease;
+}
+
+#dateLock.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.date-lock-content {
+    max-width: 500px;
+    animation: lockFadeIn 1.2s ease;
+}
+
+.date-lock-small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+}
+
+.date-lock-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(42px, 10vw, 75px);
+    color: var(--gold-light);
+    margin-bottom: 15px;
+}
+
+.date-lock-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--cream);
+}
+
+#countdown {
+    margin-top: 25px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+}
+
+@keyframes lockFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 </style>
 </head>
 
 
 <body>
+<!-- ===== LOCK SCREEN ===== -->
+<div id="dateLock">
+    <div class="date-lock-content">
 
+        <div class="date-lock-small">
+            A little surprise...
+        </div>
 
+        <div class="date-lock-title">
+            Untuk Susi Sayang ♡
+        </div>
+
+        <div class="date-lock-text">
+            Surat ini akan terbuka sebentar lagi...
+        </div>
+
+       <div id="countdown">
+    Menuju 18 September 2026 · 00:00 WIB
+</div>
+
+    </div>
+</div>
+    
 <!-- =====================================================
      BACKGROUND
 ===================================================== -->
@@ -3985,6 +4151,11 @@ footer{
 </footer>
 
 
+<button id="autoScrollBtn">
+    ↓ &nbsp; Auto Scroll
+</button>
+
+
 <script>
 
 
@@ -4313,16 +4484,14 @@ function startHeartGame(){
         );
 
 
-    setTimeout(
-        ()=>{
-            gameScreen.scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-        },
-        200
-    );
+ stopAutoScroll();
 
+setTimeout(() => {
+    gameScreen.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}, 100);
 }
 
 
@@ -4977,6 +5146,249 @@ document.addEventListener(
     }
 );
 
+/* =========================================
+   AUTO SCROLL — AUTO RESUME
+   Open → 1.8 detik → jalan pelan
+   user geser/scroll → berhenti sementara
+   user berhenti menggeser → otomatis jalan lagi
+========================================= */
+
+const autoScrollBtn = document.getElementById("autoScrollBtn");
+
+let autoScrolling = false;
+let autoScrollFrame = null;
+let autoScrollStartTimer = null;
+let autoScrollResumeTimer = null;
+let autoScrollLastTime = 0;
+let autoScrollCarry = 0;
+let autoScrollUserPaused = false;
+
+// Kecepatan sekitar 39 px/detik.
+const AUTO_SCROLL_SPEED = 0.65;
+// Berapa lama setelah user berhenti menggeser sebelum auto-scroll hidup lagi.
+const AUTO_RESUME_DELAY = 1600;
+
+function getScrollTop(){
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+}
+
+function getMaxScroll(){
+    return Math.max(
+        0,
+        Math.max(
+            document.documentElement.scrollHeight,
+            document.body ? document.body.scrollHeight : 0
+        ) - window.innerHeight
+    );
+}
+
+function clearAutoResume(){
+    if(autoScrollResumeTimer !== null){
+        clearTimeout(autoScrollResumeTimer);
+        autoScrollResumeTimer = null;
+    }
+}
+
+function scheduleAutoResume(){
+    clearAutoResume();
+
+    if(autoScrollUserPaused) return;
+
+    autoScrollResumeTimer = setTimeout(function(){
+        autoScrollResumeTimer = null;
+
+        // Hanya hidup lagi kalau user tidak sedang melakukan scroll manual.
+        if(!autoScrollUserPaused){
+            startAutoScroll();
+        }
+    }, AUTO_RESUME_DELAY);
+}
+
+function startAutoScroll(){
+    if(autoScrolling) return;
+
+    const maxScroll = getMaxScroll();
+    if(maxScroll <= 2 || getScrollTop() >= maxScroll - 2) return;
+
+    clearAutoResume();
+
+    if(autoScrollFrame !== null){
+        cancelAnimationFrame(autoScrollFrame);
+        autoScrollFrame = null;
+    }
+
+    autoScrolling = true;
+    autoScrollCarry = 0;
+    autoScrollLastTime = performance.now();
+
+    document.documentElement.classList.add("auto-scrolling");
+    autoScrollBtn.classList.add("show");
+    autoScrollBtn.innerHTML = "Ⅱ &nbsp; Pause Scroll";
+
+    autoScrollFrame = requestAnimationFrame(autoScrollStep);
+}
+
+function autoScrollStep(now){
+    if(!autoScrolling) return;
+
+    const delta = Math.min(Math.max(now - autoScrollLastTime, 0), 100);
+    autoScrollLastTime = now;
+
+    autoScrollCarry += AUTO_SCROLL_SPEED * (delta / 16.6667);
+
+    const pixels = Math.floor(autoScrollCarry);
+
+    if(pixels >= 1){
+        autoScrollCarry -= pixels;
+
+        const current = getScrollTop();
+        const maxScroll = getMaxScroll();
+        const next = Math.min(current + pixels, maxScroll);
+
+        window.scrollTo(0, next);
+
+        if(next >= maxScroll - 1){
+            stopAutoScroll(true);
+            return;
+        }
+    }
+
+    autoScrollFrame = requestAnimationFrame(autoScrollStep);
+}
+
+function stopAutoScroll(atEnd = false){
+    autoScrolling = false;
+
+    if(autoScrollFrame !== null){
+        cancelAnimationFrame(autoScrollFrame);
+        autoScrollFrame = null;
+    }
+
+    document.documentElement.classList.remove("auto-scrolling");
+    autoScrollBtn.classList.add("show");
+    autoScrollBtn.innerHTML = "↓ &nbsp; Auto Scroll";
+
+    if(!atEnd && !autoScrollUserPaused){
+        scheduleAutoResume();
+    }
+}
+
+/*
+   User sedang scroll/geser:
+   auto-scroll langsung berhenti.
+   Setelah user berhenti, auto-scroll hidup lagi otomatis.
+*/
+function userInteractedWithScroll(){
+    if(autoScrollUserPaused) return;
+
+    if(autoScrolling){
+        stopAutoScroll();
+    }else{
+        scheduleAutoResume();
+    }
+}
+
+/* Tombol Auto Scroll:
+   - saat berjalan: pause manual
+   - saat pause manual: hidupkan lagi
+*/
+autoScrollBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    e.stopPropagation();
+
+    clearAutoResume();
+
+    if(autoScrolling){
+        autoScrollUserPaused = true;
+        stopAutoScroll(true);
+    }else{
+        autoScrollUserPaused = false;
+        startAutoScroll();
+    }
+});
+
+/* Mouse / trackpad */
+window.addEventListener("wheel", function(e){
+    if(e.target && e.target.closest && e.target.closest("#autoScrollBtn")) return;
+    userInteractedWithScroll();
+}, {passive:true});
+
+/* HP / touch */
+window.addEventListener("touchstart", function(e){
+    if(e.target && e.target.closest && e.target.closest("#autoScrollBtn")) return;
+    userInteractedWithScroll();
+}, {passive:true});
+
+window.addEventListener("touchmove", function(e){
+    if(e.target && e.target.closest && e.target.closest("#autoScrollBtn")) return;
+    userInteractedWithScroll();
+}, {passive:true});
+
+/* Keyboard manual scroll */
+window.addEventListener("keydown", function(e){
+    if(!["ArrowDown","ArrowUp","PageDown","PageUp","Home","End"," ","Spacebar"].includes(e.key)) return;
+    userInteractedWithScroll();
+});
+
+/* Open → tunggu 1.8 detik → mulai otomatis */
+openBtn.addEventListener("click", function(){
+    clearTimeout(autoScrollStartTimer);
+    clearAutoResume();
+    autoScrollUserPaused = false;
+
+    autoScrollStartTimer = setTimeout(function(){
+        startAutoScroll();
+    }, 1800);
+});
+
+</script>
+
+<script>
+/* ===== AUTO OPEN SETELAH 1 MENIT ===== */
+
+const dateLock = document.getElementById("dateLock");
+const countdown = document.getElementById("countdown");
+
+/* 1 menit setelah halaman dibuka */
+const target = Date.now() + (10 * 1000);
+
+function updateCountdown() {
+
+    const now = Date.now();
+    const remaining = Math.max(0, target - now);
+
+    const totalSeconds = Math.ceil(remaining / 1000);
+
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    countdown.textContent =
+        "Terbuka dalam " +
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+
+    if (remaining <= 0) {
+
+        dateLock.classList.add("hidden");
+
+        document.body.style.overflow = "";
+
+        clearInterval(countdownTimer);
+
+        setTimeout(() => {
+            dateLock.remove();
+        }, 1000);
+
+        return;
+    }
+}
+
+document.body.style.overflow = "hidden";
+
+updateCountdown();
+
+const countdownTimer = setInterval(updateCountdown, 250);
 </script>
 
 </body>
